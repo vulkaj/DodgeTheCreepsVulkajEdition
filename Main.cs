@@ -8,6 +8,9 @@ public partial class Main : Node
 	[Export]
 	public PackedScene MobScene { get; set; }
 	
+	[Export]
+	public PackedScene PatataScene { get; set; }
+	
 	private int _score;
 	private int _record;
 	
@@ -47,8 +50,11 @@ public partial class Main : Node
 		var player = GetNode<Player>("Player");
 		var startPosition = GetNode<Marker2D>("StartPosition");
 		player.Start(startPosition.Position);
+		
+		
 
 		GetNode<Timer>("StartTimer").Start();
+		GetNode<Timer>("PatataTimer").Start();
 	}
 	
 	
@@ -58,6 +64,7 @@ public partial class Main : Node
 	{
 		GetNode<Timer>("MobTimer").Stop();
 		GetNode<Timer>("ScoreTimer").Stop();
+		GetNode<Timer>("PatataTimer").Start();
 		GetNode<HUD>("HUD").ShowGameOver();
 	}
 
@@ -119,10 +126,26 @@ public partial class Main : Node
 	{
 		GetNode<Timer>("MobTimer").Start();
 		GetNode<Timer>("ScoreTimer").Start();
+		GetNode<Timer>("PatataTimer").Start();
+	}
+	
+	
+	private void _on_patata_timer_timeout()
+	{
+//		Patata patata = PatataScene.Instantiate<Patata>();
+//		patata.Start();
+		
+		//Patata Spawner
+		var patataItem = GetNode<Patata>("Patata");
+		patataItem.Start();
+		
+		GetNode<Timer>("PatataTimer").Stop();
 	}
 	
 	
 }
+
+
 
 
 

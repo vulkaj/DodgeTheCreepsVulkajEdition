@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4tyyucldv85b"]
+[gd_scene load_steps=9 format=3 uid="uid://c4tyyucldv85b"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_l7icp"]
 [ext_resource type="PackedScene" uid="uid://d0ujw6qvxtlrv" path="res://Mob.tscn" id="2_86xvn"]
 [ext_resource type="PackedScene" uid="uid://cmlbbilageu84" path="res://Player.tscn" id="2_wjsek"]
 [ext_resource type="PackedScene" uid="uid://b5yiuwbh35mtp" path="res://HUD.tscn" id="4_d15dp"]
+[ext_resource type="PackedScene" uid="uid://b0vpw8ros67ss" path="res://Patata.tscn" id="5_xam1u"]
 
 [sub_resource type="Curve2D" id="Curve2D_4ikqb"]
 _data = {
@@ -23,6 +24,7 @@ loop = true
 [node name="Main" type="Node"]
 script = ExtResource("1_l7icp")
 MobScene = ExtResource("2_86xvn")
+PatataScene = ExtResource("5_xam1u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -56,8 +58,14 @@ curve = SubResource("Curve2D_4ikqb")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamOggVorbis_shhxc")
 
+[node name="Patata" parent="." instance=ExtResource("5_xam1u")]
+
+[node name="PatataTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="Hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="StartGame" from="HUD" to="." method="NewGame"]
+[connection signal="timeout" from="PatataTimer" to="." method="_on_patata_timer_timeout"]
