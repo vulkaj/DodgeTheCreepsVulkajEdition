@@ -28,7 +28,7 @@ public partial class Main : Node
 	{
 		var hud = GetNode<HUD>("HUD");
 		hud.UpdateScore(_score);
-		hud.ShowMessage("Get Ready!");
+		hud.ShowMessage("Prepárate!");
 		
 		Music = GetNode<AudioStreamPlayer>("Music");
 		Music.Play(0);
@@ -38,6 +38,8 @@ public partial class Main : Node
 		}
 		
 		_score = 0;
+		
+		hud.UpdateScore(_score);
 		
 		if(_record == 0){
 			hud.ActualizaRecord(_record, false);
@@ -64,7 +66,7 @@ public partial class Main : Node
 	{
 		GetNode<Timer>("MobTimer").Stop();
 		GetNode<Timer>("ScoreTimer").Stop();
-		GetNode<Timer>("PatataTimer").Start();
+		GetNode<Timer>("PatataTimer").Stop();
 		GetNode<HUD>("HUD").ShowGameOver();
 	}
 

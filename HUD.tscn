@@ -34,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_lvpkn")
 theme_override_font_sizes/font_size = 50
-text = "D0Dg3 The Cr33pS!!"
+text = "Esquiva los bichos"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -52,7 +52,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_lvpkn")
 theme_override_font_sizes/font_size = 50
-text = "ST4RT"
+text = "Empezar"
 
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0

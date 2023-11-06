@@ -24,7 +24,6 @@ loop = true
 [node name="Main" type="Node"]
 script = ExtResource("1_l7icp")
 MobScene = ExtResource("2_86xvn")
-PatataScene = ExtResource("5_xam1u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

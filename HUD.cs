@@ -19,13 +19,13 @@ public partial class HUD : CanvasLayer
 	
 	async public void ShowGameOver()
 	{
-		ShowMessage("Game Over");
+		ShowMessage("¡Te han pillado!");
 
 		var messageTimer = GetNode<Timer>("MessageTimer");
 		await ToSignal(messageTimer, Timer.SignalName.Timeout);
 
 		var message = GetNode<Label>("Message");
-		message.Text = "Dodge the\nCreeps!";
+		message.Text = "Esquiva los\nBichos!";
 		message.Show();
 
 		await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
